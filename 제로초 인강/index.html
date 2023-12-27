@@ -614,6 +614,25 @@
           background-color: var(--color_dot_divider);
           transform: skewX(-15deg);
         }
+        #main-newstand-gray .right {
+          display: flex;
+        }
+        #main-newstand-gray .bold {
+          padding-left: 25px;
+          font-weight: bold;
+          position: relative;
+        }
+        #main-newstand-gray .bold::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 7px;
+          left: 12px;
+          width: 1px;
+          height: 12px;
+          background-color: #d3d5d7;
+          background-color: var(--color_dot_divider);
+        }
         #main-newstand-gray {
           display: flex;
           justify-content: flex-start;
@@ -712,6 +731,110 @@
         #main-newstand footer {
           padding: 10px 0px 11px;
           border-top: 1px solid #ebebeb;
+          font-size: 1.3rem;
+          line-height: 35px;
+          font-weight: 600;
+          color: #606060;
+          display: flex;
+          justify-content: center;
+          position: relative;
+        }
+        #main-newstand footer .news {
+          color: var(--color_news);
+        }
+        #main-newstand footer .grid,
+        #main-newstand footer .list {
+          position: absolute;
+          border: none;
+          cursor: pointer;
+          top: -2px;
+          background-color: transparent;
+        }
+        #main-newstand footer .list {
+          right: 49px;
+          padding: 19px 9px 18px 20px;
+          top: -1px;
+        }
+        #main-newstand footer .list::before {
+          content: "";
+          display: inline-block;
+          background: url(./sp_main.png);
+          background-size: 433px 412px;
+          background-position: -363px -333px;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          filter: brightness(2.1);
+        }
+        #main-newstand footer .list:hover::before {
+          filter: brightness(1);
+        }
+        #main-newstand footer .grid {
+          top: -1px;
+          right: 0px;
+          padding: 19px 20px 18px 9px;
+        }
+        #main-newstand footer .grid::before {
+          content: "";
+          display: inline-block;
+          background: url(./sp_main.png);
+          background-size: 433px 412px;
+          background-position: -388px -189px;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          filter: brightness(1.4);
+        }
+        #main-newstand footer .grid:hover::before {
+          filter: brightness(1);
+        }
+        #main-newstand footer .total {
+          color: rgba(96, 96, 96, 0.5);
+        }
+        #main-newstand footer .prev,
+        #main-newstand footer .next {
+          background: none;
+          border: none;
+          content: "";
+          width: 36px;
+          height: 36px;
+          border: 1px solid #dadcdf;
+          border: 1px solid var(--color_button_border);
+          background-color: #fff;
+          background-color: var(--color_button1_bg);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        #main-newstand footer .prev:hover::before, #main-newstand footer .next:hover::before {
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+        }
+        #main-newstand footer .prev::before {
+          content: "";
+          background-image: url(./sp_main.png);
+          background-size: 433px 412px;
+          background-position: -179px -400px;
+          background-repeat: no-repeat;
+          width: 10px;
+          height: 12px;
+          transform: rotate(180deg);
+        }
+        #main-newstand footer .next::before {
+          content: "";
+          background-image: url(./sp_main.png);
+          background-size: 433px 412px;
+          background-position: -179px -400px;
+          background-repeat: no-repeat;
+          width: 10px;
+          height: 12px;
+        }
+        #main-newstand footer .text {
+          padding: 0px 16px;
+          width: 156px;
         }
         #main-newstand a {
           text-decoration: none;
@@ -745,7 +868,7 @@
                   </div>
                 </div>
                   <divclass="right">
-                    <a href="#">뉴스홈</a>
+                    <a href="#" class="bold">뉴스홈</a>
                   </divclass=>
               </div>
                 <div id="main-newstand-grid">
@@ -776,11 +899,13 @@
                 </div>
               </div>
               <footer>
-                <button><span class="blind">이전</span></button>
-                <div>언론사 더보기1페이지전체/4</div>
-                <button><span class="blind">다음</span></button>
-                <button><span class="blind">목록보기</span></button>
-                <button><span class="blind">격자보기</span></button>
+                <button class="prev"><span class="blind">이전</span></button>
+                <div class="text">
+                  <span class="news">언론사</span>&nbsp;더보기 1<span class="total">/4</span>
+                </div>
+                <button class="next"><span class="blind">다음</span></button>
+                <button class="list"><span class="blind">목록보기</span></button>
+                <button class="grid"><span class="blind">격자보기</span></button>
               </footer>
             </div>
           </section>
