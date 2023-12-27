@@ -854,7 +854,7 @@
           padding-top: 19px ;
         }
         #main-shopping-gray {
-            display: flex;
+          display: flex;
         }
         #main-shopping-gray .left {
           width: 668px;
@@ -877,8 +877,36 @@
           grid-template-columns: 1fr 1fr 1fr 1fr 250px;
           column-gap: 20px;
         }
+        #main-shopping-grid .item {
+          line-height: 20px;
+          letter-spacing: -.8px;
+          font-size: 1.4rem;
+        }
+        #main-shopping-grid .item > .image {
+          width: 115px;
+          height: 115px;
+          border-radius: 4px;
+          background-color: gray;
+          margin-bottom: 10px;
+        }
+        #main-shopping-grid .item > .text {
+          text-align: left;
+        } 
         .item:nth-child(1), .item:nth-child(2), .item:nth-child(3), .item:nth-child(4) {
           grid-row: 1 / span 2;
+        }
+        .item:nth-child(5), .item:nth-child(6), .item:nth-child(11) > div:first-child{
+          padding: 10px 12px 5px;
+          border: 1px solid rgba(0,0,0,.05);
+          border-radius: 4px;
+          background: rgba(245,248,251,.6);
+        }
+        .item:nth-child(6) {
+          margin: 11px 0;
+        }
+        .item:nth-child(11) > div:first-child {
+          margin-bottom: 10px;
+          height: 135px;
         }
       </style>
     <main id="main">
@@ -968,17 +996,44 @@
                 </div>
               </div>
               <div id="main-shopping-grid">
-                                  <div class="item">1</div>
-                  <div class="item">2</div>
-                  <div class="item">3</div>
-                  <div class="item">4</div>
-                  <div class="item">5</div>
-                  <div class="item">6</div>
-                  <div class="item">7</div>
-                  <div class="item">8</div>
-                  <div class="item">9</div>
-                  <div class="item">10</div>
-                  <div class="item">11</div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">5</div>
+                <div class="item">6</div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">
+                  <div class="image"></div>
+                  <div class="text">ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+                </div>
+                <div class="item">
+                  <div></div>
+                  <div>올리브 멤버스 특가 확인하기!</div>
+                </div>
               </div>
             </div>
             <footer>
