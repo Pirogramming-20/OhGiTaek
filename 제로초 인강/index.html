@@ -494,9 +494,6 @@
         #main-shopping {
           height: 560px;
         }
-        #main-newstand {
-          height: 426px;
-        }
         #main-login {
           height: 164px;
           display: flex;
@@ -574,12 +571,118 @@
         #main-stock {
           height: 236px;
         }
+        #main-newstand {
+          height: 426px;
+          display: flex;
+          flex-flow: column
+        }
+        #main-newstand-top {
+            flex: 1;
+            padding: 18px 20px;
+          }
+          #main-newstand-gray {
+            display: flex;
+            justify-content: flex-start;
+          }
+          #main-newstand header {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 1.6rem;
+            color: rgba(8, 8, 8, 0.5);
+          }
+
+          #main-newstand header .bold {
+            font-weight: bold;
+            color: black;
+          }
+          #main-newstand footer {
+            padding: 10px 0px 11px;
+            border-top: 1px solid #ebebeb;
+          }
+
+          #main-newstand a {
+            text-decoration: none;
+          }
+          #main-newstand a:hover {
+            text-decoration: underline;
+          }
+          #main-newstand a:visited {
+            color: inherit;
+          }
     </style>
     <main id="main">
         <div id="main-left">
           <aside id="main-left-ad"></aside>
-          <section id="main-newstand"></section>
-          <section id="main-shopping"></section>
+          <section id="main-newstand">
+            <div id="main-newstand">
+              <div id="main-newstand-top">
+                <header>
+                  <a href="#" class="bold">뉴스스탠드</a>
+                  <a href="#">언론사편집</a>
+                  <a href="#">엔터</a>
+                  <a href="#">스포츠</a>
+                  <a href="#">경제</a>
+                </header>
+                <div id="main-newstand-gray">
+                  <div>
+                    <a href="#">분야별 뉴스</a>
+                    <a href="#">매일신문</a>
+                    <a href="#">과제 진짜 너무 많습니다.....</a>
+                  </div>
+                  <div>
+                    <a href="#">뉴스홈</a>
+                  </div>
+                </div>
+                <div id="main-newstand-grid">
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                </div>
+              </div>
+              <footer>
+                <button><span class="blind">이전</span></button>
+                <div>언론사 더보기1페이지전체/4</div>
+                <button><span class="blind">다음</span></button>
+                <button><span class="blind">목록보기</span></button>
+                <button><span class="blind">격자보기</span></button>
+              </footer>
+            </div>
+          </section>
+
+          <section id="main-shopping">
+            <div>
+              <header>
+                <a href="#">쇼핑</a>
+                <a href="#">맨즈</a>
+                <a href="#">원쁠딜</a>
+                <a href="#">쇼핑라이브</a>
+              </header>
+              <div></div>
+              <div></div>
+            </div>
+            <footer></footer>
+          </section>
         </div>
         <div id="main-right">
           <section id="main-login">
