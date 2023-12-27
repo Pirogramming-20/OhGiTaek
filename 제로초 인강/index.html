@@ -178,6 +178,9 @@
           border-radius: 33px;
           text-align: left;
         }
+        #search > form:hover{
+          box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+        }
         #search-input{
           width: 480px;
           font-size: 1.5rem;
@@ -201,6 +204,12 @@
           height: 24px;
           fill:#03c75a;
         }
+        #search-input::placeholder {
+          color: white;
+        }
+        #search-input:focus::placeholder {
+          color: #e4e4e4;
+        }
         #search-right{
           display: inline-block;
           flex: 1;
@@ -223,6 +232,9 @@
           width: 24px;
           height: 14px;
         }
+        #search-keyboard:hover::before{
+          filter:brightness(0.7);
+        }
         #search-recent::before{
           content:"";
           display: block;
@@ -236,6 +248,7 @@
         #search-button{
           width: 58px;
           height: 58px;
+          padding: 17px 27px 16px 10px;
         }
         #search-button svg{
           width: 24px;
