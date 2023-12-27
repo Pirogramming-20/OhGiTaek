@@ -577,64 +577,151 @@
           flex-flow: column
         }
         #main-newstand-top {
-            flex: 1;
-            padding: 18px 20px;
-          }
-          #main-newstand-gray {
-            display: flex;
-            justify-content: flex-start;
-            height: 50px;
-            padding: 12px 20px;
-            background-color: var(--color_option_bg);
-            border-radius: 4px;
-          }
-          #main-newstand-grid {
-            display: grid;
-            height: 224px;
-            width: 790px;
-            grid-gap: 1px;
-            background-color: var(--color_border_in);
-            grid-template-rows: repeat(4, 1fr);
-            grid-template-columns: repeat(6, 1fr);
-            justify-content: center;
-            align-items: center;
-            border: 1px solid var(--color_border_in);
-            margin-top: 18px;
-          }
-          #main-newstand-grid > div {
-            display: flex;
-            height: 100%;
-            background-color: white;
-            justify-content: center;
-            align-items: center;
-          }
-          #main-newstand header {
-            display: flex;
-            justify-content: flex-start;
-            font-size: 1.6rem;
-            line-height: 23px;
-            margin-bottom: 17px;
-            color: rgba(8, 8, 8, 0.5);
-          }
-
-          #main-newstand header .bold {
-            font-weight: bold;
-            color: black;
-          }
-          #main-newstand footer {
-            padding: 10px 0px 11px;
-            border-top: 1px solid #ebebeb;
-          }
-
-          #main-newstand a {
-            text-decoration: none;
-          }
-          #main-newstand a:hover {
-            text-decoration: underline;
-          }
-          #main-newstand a:visited {
-            color: inherit;
-          }
+          flex: 1;
+          padding: 18px 20px;
+        }
+        #main-newstand-top .dot::before {
+          content: "";
+          display: inline-block;
+          width: 4px;
+          height: 4px;
+          background-color: #d3d5d7;
+          background-color: var(--color_dot_divider);
+          margin: 9px 7px 0;
+          border-radius: 50%;
+          vertical-align: top;
+        }
+        #main-newstand-top .dot::before:hover {
+          text-decoration: underline;
+        }
+        #main-newstand-top .dot, #main-newstand-top .slash {
+          color: rgba(8, 8, 8, 0.5);
+          font-weight: 800;
+        }
+        #main-newstand-top .slash {
+          position: relative;
+          padding-left: 26px;
+        }
+        #main-newstand-top .slash::before {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          top: 4px;
+          left: 13px;
+          width: 1px;
+          height: 15px;
+          background-color: #d3d5d7;
+          background-color: var(--color_dot_divider);
+          transform: skewX(-15deg);
+        }
+        #main-newstand-gray {
+          display: flex;
+          justify-content: flex-start;
+          height: 50px;
+          padding: 12px 20px;
+          background-color: var(--color_option_bg);
+          border-radius: 4px;
+          font-size: 1.4rem;
+          line-height: 26px;
+        }
+        #main-newstand-gray .left {
+          display: flex;
+          flex: 1;
+        }
+        #main-newstand-gray .left > a:first-of-type::after {
+          content: "";
+          background-image: url(./sp_main.png);
+          background-size: 433px 412px;
+          background-position: -154px -201px;
+          background-repeat: no-repeat;
+          width: 9px;
+          height: 6px;
+          display: inline-block;
+          margin: 10px 0 0 5px;
+          vertical-align: top;
+        }
+        #main-newstand-animation {
+          padding: 25px;
+          position: relative;
+          top: -25px;
+        }
+        #main-newstand-animation::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 32px;
+          left: 12px;
+          background-color: #d3d5d7;
+          background-color: var(--color_dot_divider);
+          width: 1px;
+          height: 12px;
+        }
+        #main-newstand-animation > a:first-of-type {
+          vertical-align: top;
+        }
+        #main-newstand-animation > a:first-of-type::after {
+          content: "";
+          display: inline-block;
+          width: 3px;
+          height: 3px;
+          background-color: #d3d5d7;
+          background-color: var(--color_dot_divider);
+          margin: 12px 6px 0 6px;
+          border-radius: 50%;
+          vertical-align: top;
+        }
+        #main-newstand-animation a:last-of-type {
+          text-overflow: ellipsis;
+          width: 418px;
+          white-space: nowrap;
+          display: inline-block;
+          overflow: hidden;
+        }
+        #main-newstand-grid {
+          display: grid;
+          height: 224px;
+          width: 790px;
+          grid-gap: 1px;
+          background-color: var(--color_border_in);
+          grid-template-rows: repeat(4, 1fr);
+          grid-template-columns: repeat(6, 1fr);
+          justify-content: center;
+          align-items: center;
+          border: 1px solid var(--color_border_in);
+          margin-top: 18px;
+        }
+        #main-newstand-grid > div {
+          display: flex;
+          height: 100%;
+          background-color: white;
+          justify-content: center;
+          align-items: center;
+        }
+        #main-newstand header {
+          display: flex;
+          justify-content: flex-start;
+          font-size: 1.6rem;
+          line-height: 23px;
+          margin-bottom: 17px;
+          color: rgba(8, 8, 8, 0.5);
+        }
+        #main-newstand header .bold {
+          font-weight: bold;
+          color: black;
+        }
+        #main-newstand footer {
+          padding: 10px 0px 11px;
+          border-top: 1px solid #ebebeb;
+        }
+        #main-newstand a {
+          text-decoration: none;
+        }
+        #main-newstand a:hover {
+          text-decoration: underline;
+        }
+        #main-newstand a:visited {
+          color: inherit;
+        }
     </style>
     <main id="main">
         <div id="main-left">
@@ -644,21 +731,23 @@
               <div id="main-newstand-top">
                 <header>
                   <a href="#" class="bold">뉴스스탠드</a>
-                  <a href="#">언론사편집</a>
-                  <a href="#">엔터</a>
-                  <a href="#">스포츠</a>
-                  <a href="#">경제</a>
+                  <a href="#" class="dot">언론사편집</a>
+                  <a href="#" class="slash">엔터</a>
+                  <a href="#" class="slash">스포츠</a>
+                  <a href="#" class="slash">경제</a>
                 </header>
                 <div id="main-newstand-gray">
-                  <div>
+                  <div class="left">
                     <a href="#">분야별 뉴스</a>
+                    <div id="main-newstand-animation">
                     <a href="#">매일신문</a>
                     <a href="#">과제 진짜 너무 많습니다.....</a>
                   </div>
-                  <div>
-                    <a href="#">뉴스홈</a>
-                  </div>
                 </div>
+                  <divclass="right">
+                    <a href="#">뉴스홈</a>
+                  </divclass=>
+              </div>
                 <div id="main-newstand-grid">
                   <div>언론사</div>
                   <div>언론사</div>
