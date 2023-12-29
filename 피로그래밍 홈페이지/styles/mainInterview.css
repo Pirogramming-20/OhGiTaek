@@ -1,0 +1,112 @@
+main{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--gutter);
+  padding: 0 var(--offset);
+  width: min(100%,1200px);
+  margin: auto; 
+}
+
+.headline{
+  width: 94%;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+}
+
+.teamlist{
+  background-color: var(--gray);
+  display: block;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding:var(--gutter);
+  width: min(96%, 1135px);
+  border-radius: 10px;
+  margin-top: 16px;
+  position: relative;
+  transition-duration: 0.3s;
+}
+
+h2{
+  font-size: 1.8rem;
+  height: 18px;
+  width: 70px;
+}
+.team-ex{
+  margin-left: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.memname{
+  background-color: var(--green);
+  color: black;
+  height: 26px;
+  width: 73px;
+  font-size: 14px;
+  padding: 7px 8px;
+  border-radius: 5px;
+}
+.teamlist > .team-list-upside{
+  display: flex;
+  position: relative;
+}
+
+.teamlogo{
+  width: 70px;
+  border-radius: 35px;
+  height: 70px;
+  background-color: white;
+  transition-duration: 0.3s;
+}
+
+
+.hamburger-icon-main{
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 30px;
+  height: 27px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburger-icon-main >div{
+  height: 3px;
+  margin: 3px 0;
+  background-color: white;
+  transition-duration: 0.3s;
+}
+
+.team-list-down{
+  font-size: 20px;
+  padding-top: 16px;
+}
+
+.teamlist:hover{
+  transform: translateY(-2px);
+  .teamlogo{
+    transform: scale(1.03);
+  }
+  .hamburger-icon-main > div:nth-of-type(1){
+    transform: scaleX(0.5);
+    transform-origin: 0%;
+  }
+
+  .hamburger-icon-main > div:nth-of-type(3){
+    transform: scaleX(0.5);
+    transform-origin: 100%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+main{
+  grid-template-columns: repeat(2, 1fr);
+}
+}
+@media screen and (max-width: 600px) {
+  main{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

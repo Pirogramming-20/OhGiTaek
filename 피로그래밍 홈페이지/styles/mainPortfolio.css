@@ -1,0 +1,122 @@
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center;
+  justify-content: space-between; */
+  height: var(--header-hight);
+  width: min(100%,1200px);
+  margin: auto;
+}
+
+.headline{
+  width: 94%;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+}
+
+.teamlist{
+  background-color: var(--gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding:var(--gutter);
+  width: min(96%, 1135px);
+  border-radius: 10px;
+  margin-top: 16px;
+  position: relative;
+  transition-duration: 0.3s;
+}
+
+h2{
+  font-size: 2.2rem;
+}
+.team-ex{
+  margin-left: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+.memname{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter);
+}
+.memname > div{
+  background-color: lightgray;
+  color: black;
+  padding: 6px 8px;
+  border-radius: 5px;
+}
+.memname > div:nth-of-type(1){
+  background-color: var(--green);
+}
+
+.teamlist > .team-list-left{
+  display: flex;
+}
+
+.teamlogo{
+  width: 150px;
+  border-radius: 10px;
+  height: 110px;
+  background-color: white;
+  transition-duration: 0.3s;
+}
+
+
+.hamburger-icon-main{
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburger-icon-main >div{
+  height: 3px;
+  margin: 3px 0;
+  background-color: white;
+  transition-duration: 0.3s;
+}
+
+/* .hamburger-icon-main > div:nth-of-type(1){
+  align-self: flex-start;
+}
+.hamburger-icon-main > div:nth-of-type(3){
+  align-self: flex-end;
+} */
+
+.teamlist:hover{
+  transform: translateY(-2px);
+  .teamlogo{
+    transform: scale(1.03);
+  }
+  .hamburger-icon-main > div:nth-of-type(1){
+    transform: scaleX(0.5);
+    transform-origin: 0%;
+  }
+
+  .hamburger-icon-main > div:nth-of-type(3){
+    transform: scaleX(0.5);
+    transform-origin: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .team-list-left{
+    flex-direction: column;
+    align-items: center;
+  }
+  .team-ex{
+    text-align: center;
+  }
+  .teamlist > .team-list-left {
+    display: flex;
+    width: 100%;
+}
+  .teamlogo{
+    width: min(100%, 250px);
+    height: 160px;
+  }
+}
