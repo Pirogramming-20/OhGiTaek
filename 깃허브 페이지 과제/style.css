@@ -23,12 +23,13 @@ header{
   vertical-align: center;
 }  
 #hd-left-icon{
-  display: inline-block;
-  background-color:blue;
+  /* display: inline-block; */
+  background-image: url(./githubicon.png);
   margin-left: 50px;
   margin-top: 19px;
   width: 34px;
   height: 34px;
+  z-index: 4;
   cursor: pointer;
 }
 .whygithub{
