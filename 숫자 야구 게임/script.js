@@ -101,7 +101,7 @@ function check_numbers()  {
   // 중복된 수가 있을경우 or 숫자가 아닌 수를 입력할 경우 잘못된경우로 예외처리 및 재입력하도록 설정
   input_num = num1.value+' '+num2.value+' '+num3.value;
   if (num1.value == num2.value || num1.value == num3.value || num2.value == num3.value 
-    || !( num1.value >=  96 && num1.value <= 105 ) || !( num2.value >=  96 && num2.value <= 105 ) ||!( num3.value >=  96 && num3.value <= 105 )){
+    || ( num1.value >= 96 && num1.value <= 105 ) || ( num2.value >= 96 && num2.value <= 105 ) ||( num3.value >= 96 && num3.value <= 105 )){
     num1.value = "";
     num2.value = "";
     num3.value = "";
@@ -112,7 +112,7 @@ function check_numbers()  {
     left.className = 'left';
     left.innerText = input_num;
     check_result.append(left,"잘못된 입력 다시 입력하세요");
-    result_display.appendChild(check_result);
+    result_display.appendChild(check_result);ㄴ
     return ;
   }
 
