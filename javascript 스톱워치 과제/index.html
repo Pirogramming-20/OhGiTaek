@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css"
+    />
+    <script src="script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <h1><i class="fa-solid fa-stopwatch"></i>피로그래밍 스톱워치</h1>
+      <div id="stopwatch">
+        <div id="timer"></div>
+        <div id="switch">
+          <button onclick="start()" id="start" class="btn">start</button>
+          <button onclick="stop()" id="stop" class="btn">stop</button>
+          <button onclick="reset()" id="reset" class="btn">reset</button>
+        </div>
+      </div>
+      <div id="record">
+        <div id="recordMain" class="main">
+          <i class="fa-regular fa-circle main"></i>
+          <div>구간 기록</div>
+          <i class="fa-solid fa-trash"></i>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

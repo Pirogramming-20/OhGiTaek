@@ -1,0 +1,77 @@
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 40px;
+  gap: 10px;
+}
+#timer {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
+#stopwatch {
+  gap: 10px;
+  background-color: lightgray;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+}
+#switch {
+  display: flex;
+  width: 350px;
+  justify-content: space-around;
+}
+.btn {
+  border-radius: 25px;
+  width: 60px;
+  height: 60px;
+}
+
+#record {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#recordMain {
+  background-color: lightgray;
+  font-size: 25px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 450px;
+  padding: 30px;
+}
+.record {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 450px;
+  padding: 30px;
+}
+
+.checked::after {
+  content: "";
+  background-image: url(circle-check-regular.svg);
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  display: block;
+  z-index: 2;
+}
+.checked.fa-circle::before {
+  content: "";
+}
