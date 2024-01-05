@@ -38,7 +38,9 @@ def Menu4(name_del):
   # print(name_space,'/',score1_space,'/',score2_space,'/',grade)
   # print(i)
 
-  name_space.pop(i); score1_space.pop(i); score2_space.pop(i); grade.pop(i)
+  name_space.pop(i); score1_space.pop(i); score2_space.pop(i); 
+  if(len(grade) >= i+1):
+    grade.pop(i)
   # print(name_space,'/',score1_space,'/',score2_space,'/',grade)
 
 #학생 정보를 저장할 변수 초기화
@@ -98,11 +100,13 @@ while True :
     #예외사항 처리(저장된 학생 정보의 유무)
     if(not(name_space)):
       print("No student data!")
+      continue
     #예외사항이 아닌 경우, 삭제할 학생 이름 입력 받기
     name = input("Enter the name to delete : ")
     #입력 받은 학생의 존재 유무 체크 후, 없으면 "Not exist name!" 출력
     if(not(name in name_space)):
       print("No exist name!")
+      continue
     #있으면(예를 들어 kim 이라 하면), 4번 함수 호출 후에 "kim student information is deleted." 출력
     Menu4(name)
     print("{} student information is deleted.".format(name))
