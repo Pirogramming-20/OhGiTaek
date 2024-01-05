@@ -1,10 +1,9 @@
 num = 0
 orderA = 1
 
-
-
-while(num < 31):
-  #n입력받기
+def brGame():
+  global num
+  global orderA
   n = input("부를 숫자의 개수를 입력하세요(1, 2, 3만 입력 가능) : ")
   orderA += 1
   while(n != '1' and n != '2' and n != '3'):
@@ -28,4 +27,8 @@ while(num < 31):
       if(num == 31):
         print("playerA win!")
         break
+
+
+while(num < 31):
+  brGame()
   
