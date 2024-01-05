@@ -19,11 +19,13 @@ while(num < 31):
       num += 1
       print("playerA : {}".format(num))
       if(num == 31):
+        print("playerB win!")
         break
   else:
     for i in range(int(n)):
       num += 1
       print("playerB : {}".format(num))
       if(num == 31):
+        print("playerA win!")
         break
   
