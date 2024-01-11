@@ -1,40 +1,57 @@
-<h1>리뷰 수정하기</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my Movie Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/read.css' %}" />
+  </head>
+  <body>
+    <h1>리뷰 수정하기</h1>
+    <form
+      action="/movies/{{movie.id}}/update/"
+      method="post"
+      class="movie_list"
+    >
+      {% csrf_token %}
+      <span>제목 : </span
+      ><input name="title" placeholder="제목" value="{{movie.title}}" />
+      <span>개봉년도 : </span
+      ><input
+        name="release_time"
+        placeholder="개봉년도"
+        value="{{movie.release_time}}"
+      />
 
-<form action="/movies/{{movie.id}}/update/" method="post">
-  {% csrf_token %}
-  <span>제목 : </span
-  ><input name="title" placeholder="제목" value="{{movie.title}}" /> <br />
-  <span>개봉년도 : </span
-  ><input
-    name="release_time"
-    placeholder="개봉년도"
-    value="{{movie.release_time}}"
-  />
-  <br />
-  <span>감독 : </span
-  ><input name="director" placeholder="감독" value="{{movie.director}}" />
-  <br />
-  <span>주연 : </span
-  ><input name="actor" placeholder="주연" value="{{movie.actor}}" /> <br />
-  <span>장르 : <select name="genre" required="" id="id_genre">
-    <option value="" selected="">---------</option>
-    <option value="스릴러 영화">스릴러 영화</option>
-    <option value="로맨스 영화">로맨스 영화</option>
-    <option value="액션 영화">액션 영화</option>
-    <option value="sf 영화">sf 영화</option>
-    <option value="코미디 영화">코미디 영화</option>
-    <option value="공포 영화">공포 영화</option>
-    <option value="전쟁 영화">전쟁 영화</option>
-  </select>
-  <span>별점 : </span
-  ><input name="star" placeholder="별점" value="{{movie.star}}" /> <br />
-  <span>러닝타임 : </span
-  ><input name="time" placeholder="러닝타임" value="{{movie.time}}" /> <br />
-  <span>리뷰 : </span
-  ><textarea name="content" cols="30" rows="10" placeholder="리뷰">
-{{movie.content}}</textarea
-  >
-  <div>
-    <input type="submit" value="작성완료" />
-  </div>
-</form>
+      <span>감독 : </span
+      ><input name="director" placeholder="감독" value="{{movie.director}}" />
+
+      <span>주연 : </span
+      ><input name="actor" placeholder="주연" value="{{movie.actor}}" />
+      <span>장르 :</span>
+      <select name="genre" required="" id="id_genre">
+        <option value="" selected="">---------</option>
+        <option value="스릴러 영화">스릴러 영화</option>
+        <option value="로맨스 영화">로맨스 영화</option>
+        <option value="액션 영화">액션 영화</option>
+        <option value="sf 영화">sf 영화</option>
+        <option value="코미디 영화">코미디 영화</option>
+        <option value="공포 영화">공포 영화</option>
+        <option value="전쟁 영화">전쟁 영화</option>
+      </select>
+      <div>별점 :</div>
+      <input name="star" placeholder="별점" value="{{movie.star}}" />
+      <div>러닝타임 :</div>
+      <input name="time" placeholder="러닝타임" value="{{movie.time}}" />
+      <div>리뷰 :</div>
+      <textarea name="content" cols="30" rows="10" placeholder="리뷰">
+  {{movie.content}}</textarea
+      >
+      <div>
+        <input type="submit" value="작성완료" class="btn" />
+      </div>
+    </form>
+  </body>
+</html>

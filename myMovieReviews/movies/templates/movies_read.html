@@ -1,25 +1,37 @@
-<h1>{{ movie.title }}</h1>
-<p>작가 : {{ movie.director }}</p>
-<br />
-<p>주연 : {{ movie.actor }}</p>
-<br />
-<p>장르 : {{ movie.genre }}</p>
-<br />
-<p>별점 : {{ movie.star }}</p>
-<br />
-<p>러닝타임 : {{ movie_time_hour}}시간 {{movie_time_min}}분</p>
-<br />
-<p>내용 : {{ movie.content }}</p>
-<br />
-
-<!-- #리뷰리스트화면으로 돌아가기 -->
-<a href="/movies/">my Movie reviews</a>
-
-<!-- 수정하기 버튼 -->
-<a href="/movies/{{movie.id}}/update/">수정하기</a>
-
-<!-- 리뷰 삭제하기 -->
-<form action="/movies/{{movie.id}}/delete/" method="post">
-  {% csrf_token %}
-  <input type="submit" value="삭제하기" />
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my Movie Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/read.css' %}" />
+  </head>
+  <body>
+    <div class="movie_list">
+      <h1>{{ movie.title }}</h1>
+      <p>작가 : {{ movie.director }}</p>
+      <br />
+      <p>주연 : {{ movie.actor }}</p>
+      <br />
+      <p>장르 : {{ movie.genre }}</p>
+      <br />
+      <p>별점 : {{ movie.star }}</p>
+      <br />
+      <p>러닝타임 : {{ movie_time_hour}}시간 {{movie_time_min}}분</p>
+      <br />
+      <p>내용 : {{ movie.content }}</p>
+      <br />
+      <!-- #리뷰리스트화면으로 돌아가기 -->
+      <a href="/movies/">my Movie reviews</a>
+      <!-- 수정하기 버튼 -->
+      <a href="/movies/{{movie.id}}/update/">수정하기</a>
+      <!-- 리뷰 삭제하기 -->
+      <form action="/movies/{{movie.id}}/delete/" method="post">
+        {% csrf_token %}
+        <input type="submit" value="삭제하기" class="btn" />
+      </form>
+    </div>
+  </body>
+</html>

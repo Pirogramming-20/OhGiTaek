@@ -1,0 +1,42 @@
+h1 {
+  font-size: 30px;
+
+  color: white;
+}
+.create {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 60vw;
+}
+.create > a {
+  font-size: 25px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../image/ex2.jpg");
+  background-size: cover;
+  gap: 30px;
+  align-items: center;
+  opacity: 0.8;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.movie_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding: 50px;
+  background-color: lightgray;
+  border-radius: 20px;
+}
+.movie_list > p > a {
+  font-size: 20px;
+}
+.btn {
+  width: 130px;
+  height: 30px;
+}

@@ -1,9 +1,25 @@
-<h3>영화 리뷰 게시판</h3>
-<a href="/movies/create/">리뷰 작성</a>
-
-{% for movie in movies %}
-<p><a href="/movies/{{movie.id}}/">{{movie.id}}. {{movie.title}}</a></p>
-<p>{{movie.release_time}}</p>
-<p>{{movie.genre}}</p>
-<p>{{movie.star}}</p>
-{% endfor %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my Movie Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+  </head>
+  <body>
+    <h3>영화 리뷰 게시판</h3>
+    <div class="create"><a href="/movies/create/">리뷰 작성</a></div>
+    <div class="movie_lists">
+      {% for movie in movies %}
+      <div class="movie_list">
+        <p><a href="/movies/{{movie.id}}/">{{movie.id}}. {{movie.title}}</a></p>
+        <p>개봉 년도 : {{movie.release_time}}</p>
+        <p>장르 : {{movie.genre}}</p>
+        <p>별점 : {{movie.star}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
