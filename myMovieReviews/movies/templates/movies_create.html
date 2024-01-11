@@ -7,7 +7,16 @@
   <br />
   <span>감독 : </span><input name="director" placeholder="감독" /> <br />
   <span>주연 : </span><input name="actor" placeholder="주연" /> <br />
-  <span>장르 : </span><input name="genre" placeholder="장르" /> <br />
+  <span>장르 : <select name="genre" required="" id="id_genre">
+    <option value="" selected="">---------</option>
+    <option value="스릴러 영화">스릴러 영화</option>
+    <option value="로맨스 영화">로맨스 영화</option>
+    <option value="액션 영화">액션 영화</option>
+    <option value="sf 영화">sf 영화</option>
+    <option value="코미디 영화">코미디 영화</option>
+    <option value="공포 영화">공포 영화</option>
+    <option value="전쟁 영화">전쟁 영화</option>
+  </select>
   <span>별점 : </span><input name="star" placeholder="별점" /> <br />
   <span>러닝타임 : </span><input name="time" placeholder="러닝타임" /> <br />
   <span>리뷰 : </span
@@ -16,3 +25,15 @@
     <input type="submit" value="작성완료" />
   </div>
 </form>
+
+
+<!-- <select name="genre" required="" id="id_genre">
+  <option value="" selected="">---------</option>
+
+  <option value="스릴러">스릴러</option>
+
+  <option value="로맨스">로맨스</option>
+
+  <option value="액션">액션</option>
+
+</select> -->

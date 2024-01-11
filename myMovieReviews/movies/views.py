@@ -1,9 +1,9 @@
-from django.shortcuts import render, HttpResponse , redirect
+from django.shortcuts import render, HttpResponse , redirect, get_object_or_404
 from .models import *
 # Create your views here.
 
 def movies_list(request):
-  movies = Movie.objects.all()
+  movies = Movie.objects.all().order_by(('title'))
   context = {
     "movies" : movies
   }
@@ -25,22 +25,18 @@ def movies_create(request):
   return render(request,"movies_create.html")
 
 def movies_read(request, pk):
-  movie = Movie.objects.get(id = pk)
+  movie = get_object_or_404(Movie, pk=pk)
+  movie_time_hour = int(movie.time) // 60
+  movie_time_min = int(movie.time) - (movie_time_hour*60)
   context = {
-    "movie" : movie
-    # "title" : movie.title,
-    # 'release_time' : movie.release_time,
-    # 'director' : movie.director,
-    # 'actor' : movie.actor,
-    # 'genre' : movie.genre,
-    # 'star' : movie.star,
-    # 'time' : movie.time,
-    # 'content' : movie.content,
+    "movie" : movie,
+    "movie_time_hour" : movie_time_hour,
+    "movie_time_min" : movie_time_min,
   }
   return render(request, "movies_read.html", context)
 
 def movies_update(request, pk):
-  movie = Movie.objects.get(id = pk)
+  movie = get_object_or_404(Movie, pk=pk)
   if request.method == 'POST':
     movie.title = request.POST["title"]
     movie.release_time = request.POST['release_time']
