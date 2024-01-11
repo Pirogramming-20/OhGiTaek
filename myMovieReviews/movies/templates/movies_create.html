@@ -1,0 +1,18 @@
+<h1>리뷰 작성하기</h1>
+
+<form action="/movies/create/" method="post">
+  {% csrf_token %}
+  <span>제목 : </span><input name="title" placeholder="제목" /> <br />
+  <span>개봉년도 : </span><input name="release_time" placeholder="개봉년도" />
+  <br />
+  <span>감독 : </span><input name="director" placeholder="감독" /> <br />
+  <span>주연 : </span><input name="actor" placeholder="주연" /> <br />
+  <span>장르 : </span><input name="genre" placeholder="장르" /> <br />
+  <span>별점 : </span><input name="star" placeholder="별점" /> <br />
+  <span>러닝타임 : </span><input name="time" placeholder="러닝타임" /> <br />
+  <span>리뷰 : </span
+  ><textarea name="content" cols="30" rows="10" placeholder="리뷰"></textarea>
+  <div>
+    <input type="submit" value="작성완료" />
+  </div>
+</form>
