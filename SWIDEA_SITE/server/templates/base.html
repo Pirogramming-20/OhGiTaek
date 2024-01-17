@@ -50,9 +50,9 @@
   });
 
   document.getElementById("mySelect").value =
-    localStorage.getItem("selectedOption");
+    sessionStorage.getItem("selectedOption");
 
   document.getElementById("mySelect").addEventListener("change", function () {
-    localStorage.setItem("selectedOption", this.value);
+    sessionStorage.setItem("selectedOption", this.value);
   });
 </script>

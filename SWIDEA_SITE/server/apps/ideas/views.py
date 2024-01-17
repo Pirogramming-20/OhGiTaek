@@ -5,16 +5,26 @@ from .forms import IdeaForm
 from django.core.paginator import Paginator
 
 # Create your views here.
-
+sort_temp='temp'
 def idea_list(request):
   ideas = Idea.objects.all()
   sort = request.GET.get('sort')
+  print(request.GET.get('sort'))
+  if (request.GET.get('sort')) is None:
+    global sort_temp
+    if sort_temp == 'temp':
+      sort = 'temp'
+    else:
+      sort = sort_temp
+  else:
+    sort = request.GET.get('sort')
+  
   if sort == 'title':
     ideas = ideas.order_by('title')
   elif sort == 'pk':
-    ideas= ideas.order_by('-pk')
+    ideas= ideas.order_by('pk')
   elif sort == 'updated_date':
-    ideas = ideas.order_by('pk')
+    ideas = ideas.order_by('-pk')
   elif sort == 'interest':
     ideas = ideas.order_by('-interest')
   elif sort == 'star':
@@ -22,7 +32,7 @@ def idea_list(request):
   paginator = Paginator(ideas, 4) # 한 페이지에 4개의 게시글을 보여줌
   page = request.GET.get('page')
   ideas = paginator.get_page(page)
-
+  sort_temp = sort
   ctx = {
     'ideas':ideas,
     'paginator': paginator,
