@@ -22,10 +22,24 @@
   {% for idea in ideas %}
   <!-- <img class="item"> -->
     {% if idea.image.url != null and idea.image.url != '' %}
-    <img src="{{ idea.image.url }}" alt="" >
+    <div class="image-container">
+      <img src="{{ idea.image.url }}" alt="" >
+      <span class="star-icon">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill"></i>
+      </span>
+  </div>
+    
     
     {% else %}
-    <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
+
+    <div class="image-container">
+      <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
+      <span class="star-icon">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill"></i>
+      </span>
+  </div>
     {% endif %}
     <div class="info">
       <a href="{% url 'ideas:detail' idea.pk %}" class="title">
@@ -35,9 +49,7 @@
       <p class="interest">
         아이디어 관심도: <a href="#" onclick="fetchMin()">-</a> <article>{{idea.interest}}</article> <a>+</a>
       </p>
-      <script>
-        
-      </script>
+      
     </div>
   </div>
   {% endfor %}

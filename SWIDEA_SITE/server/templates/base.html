@@ -6,8 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'ideas/css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css"
+    />
   </head>
   <body>
+    <style>
+      .image-container {
+        position: relative;
+      }
+
+      .image-container img {
+        width: 200px;
+
+        height: 200px;
+      }
+
+      .image-container > .star-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30%;
+        height: 30%;
+        z-index: 2;
+      }
+      .star-icon {
+        position: relative;
+      }
+
+      .star-icon .fa-star {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .star-icon .fill {
+        color: transparent;
+      }
+    </style>
     <header class="navbar">
       <a href="/" id="logo"><h1>My SW Idea Manage</h1></a>
       <a href="{% url 'ideas:create' %}" id="logo"><h1>아이디어 등록</h1></a>
@@ -18,3 +55,12 @@
     {%block content%} {%endblock%}
   </body>
 </html>
+<script>
+  document.querySelectorAll(".star-icon").forEach(function (element) {
+    element.addEventListener("click", function () {
+      var fillStar = this.querySelector(".fill");
+      fillStar.style.color =
+        fillStar.style.color == "yellow" ? "transparent" : "yellow";
+    });
+  });
+</script>
