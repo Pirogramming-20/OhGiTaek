@@ -5,7 +5,11 @@ from .forms import DevForm
 
 def dev_list(request):
   devtools = Devtool.objects.all()
-  
+  search_txt = request.GET.get('search_txt')
+  #필터링
+  if search_txt:
+    devtools = devtools.filter(name__contains=search_txt)
+
   ctx = {
     'devtools':devtools
   }

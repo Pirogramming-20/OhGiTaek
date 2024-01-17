@@ -2,6 +2,8 @@ import json
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from .models import *
 from .forms import IdeaForm
+from django.core.paginator import Paginator
+
 # Create your views here.
 
 def idea_list(request):
@@ -10,13 +12,21 @@ def idea_list(request):
   if sort == 'title':
     ideas = ideas.order_by('title')
   elif sort == 'pk':
-    ideas= ideas.order_by('pk')
+    ideas= ideas.order_by('-pk')
   elif sort == 'updated_date':
-    ideas = ideas.order_by('updated_date')
+    ideas = ideas.order_by('pk')
   elif sort == 'interest':
-    ideas = ideas.order_by('interest')
+    ideas = ideas.order_by('-interest')
+  elif sort == 'star':
+    ideas = ideas.order_by('-star')
+  paginator = Paginator(ideas, 4) # 한 페이지에 4개의 게시글을 보여줌
+  page = request.GET.get('page')
+  ideas = paginator.get_page(page)
+
   ctx = {
-    'ideas':ideas
+    'ideas':ideas,
+    'paginator': paginator,
+    
   }
   return render(request,'ideas/idea_list.html',ctx)
 

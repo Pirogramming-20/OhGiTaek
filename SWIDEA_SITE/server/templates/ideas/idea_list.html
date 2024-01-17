@@ -7,8 +7,9 @@
 <!-- 정렬기준 -->
 <div class="sort">
   <form>
-    <select name="sort" onchange="form.submit()">
-      <option value="" selected="">---------</option>
+    <select name="sort" onchange="form.submit()" id="mySelect">
+      <option>---------</option>
+      <option value="star">찜하기순</option>
       <option value="title">이름순</option>
       <option value="pk">등록순</option>
       <option value="updated_date">최신순</option>
@@ -17,15 +18,15 @@
   </form>
 </div>
 
-<!-- 아이디어 리스트 반복문 -->
-<div class="content-wrapper">
-  {% for idea in ideas %}
-  <!-- <img class="item"> -->
-    {% if idea.image.url != null and idea.image.url != '' %}
+<div class="list_main">
+  <!-- 아이디어 리스트 반복문 -->
 
-    {% if idea.star %}
+  {% for idea in ideas %}
+  <div class="content-wrapper">
+    <!-- <img class="item"> -->
+    {% if idea.image.url != null and idea.image.url != '' %} {% if idea.star %}
     <div class="image-container">
-      <img src="{{ idea.image.url }}" alt="" >
+      <img src="{{ idea.image.url }}" alt="" />
       <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
         <i class="fa-regular fa-star outline"></i>
         <i class="fa-solid fa-star fill check"></i>
@@ -33,16 +34,13 @@
     </div>
     {% else %}
     <div class="image-container">
-      <<img src="{{ idea.image.url }}" alt="" >
+      <img src="{{ idea.image.url }}" alt="" />
       <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
         <i class="fa-regular fa-star outline"></i>
         <i class="fa-solid fa-star fill"></i>
       </a>
     </div>
-    {% endif %}
-    
-    {% else %}
-    {% if idea.star %}
+    {% endif %} {% else %} {% if idea.star %}
     <div class="image-container">
       <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
       <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
@@ -58,24 +56,34 @@
         <i class="fa-solid fa-star fill"></i>
       </a>
     </div>
-    {% endif %}
-    {% endif %}
+    {% endif %} {% endif %}
     <div class="info">
       <a href="{% url 'ideas:detail' idea.pk %}" class="title">
         {{idea.title}}
       </a>
       <p class="devtool">예상 개발툴: {{idea.devtool}}</p>
-      <p class="interest"> 아이디어 관심도: 
-        <button value="{{idea.pk}}" class="click"  name="increase">+</button>
+      <p class="interest">
+        아이디어 관심도:
+        <button value="{{idea.pk}}" class="click" name="increase">+</button>
         <span id="count-{{idea.pk}}">{{idea.interest}}</span>
-        <button value="{{idea.pk}}" class="click" name="decrease"  >-</button>
+        <button value="{{idea.pk}}" class="click" name="decrease">-</button>
       </p>
-      
-    
-
     </div>
   </div>
   {% endfor %}
 </div>
+<!-- 페이지네이션 -->
+<div class="pagination">
+  {% if ideas.has_previous %}
+  <a href="?page=1">처음</a>
+  <a href="?page={{ ideas.previous_page_number }}">이전</a>
+  {% endif %}
+  <span>{{ ideas.number }}</span>
+  <span>/</span>
+  <span>{{ ideas.paginator.num_pages }}</span>
+  {% if ideas.has_next %}
+  <a href="?page={{ ideas.next_page_number }}">다음</a>
+  <a href="?page={{ ideas.paginator.num_pages }}">마지막</a>
+  {% endif %}
+</div>
 {%endblock%}
-

@@ -1,5 +1,39 @@
 @import "./reset.css";
 
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 200px;
+
+  height: 200px;
+}
+
+.image-container > .star-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 30%;
+  z-index: 2;
+}
+.star-icon {
+  position: relative;
+}
+
+.star-icon .fa-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.star-icon .fill {
+  color: transparent;
+}
+.star-icon .fill.check {
+  color: yellow;
+}
 .navbar {
   display: flex;
   gap: 30px;
@@ -39,4 +73,14 @@ img {
   position: absolute;
   top: 10%;
   right: 10%;
+}
+
+.list_main {
+  display: flex;
+  gap: 70px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
 }

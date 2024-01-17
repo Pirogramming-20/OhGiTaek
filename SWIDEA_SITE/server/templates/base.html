@@ -12,42 +12,6 @@
     />
   </head>
   <body>
-    <style>
-      .image-container {
-        position: relative;
-      }
-
-      .image-container img {
-        width: 200px;
-
-        height: 200px;
-      }
-
-      .image-container > .star-icon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 30%;
-        height: 30%;
-        z-index: 2;
-      }
-      .star-icon {
-        position: relative;
-      }
-
-      .star-icon .fa-star {
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .star-icon .fill {
-        color: transparent;
-      }
-      .star-icon .fill.check {
-        color: yellow;
-      }
-    </style>
     <header class="navbar">
       <a href="/" id="logo"><h1>My SW Idea Manage</h1></a>
       <a href="{% url 'ideas:create' %}" id="logo"><h1>아이디어 등록</h1></a>
@@ -58,22 +22,22 @@
     {%block content%} {%endblock%}
   </body>
 </html>
+<link rel="stylesheet" href="{% static 'ideas/css/style.css' %}" />
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
   $(".click").click(function () {
     let pk = $(this).attr("value");
     let check = $(this).attr("name");
     $.ajax({
-      // .like 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+      // .click 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
       type: "POST", // 데이터를 전송하는 방법을 지정
       url: "{% url 'ideas:interest' %}", // 통신할 url을 지정
       data: { pk: pk, check: check, csrfmiddlewaretoken: "{{ csrf_token }}" }, // 서버로 데이터 전송시 옵션
       dataType: "json", // 서버측에서 전송한 데이터를 어떤 형식의 데이터로서 해석할 것인가를 지정, 없으면 알아서 판단
       // 서버측에서 전송한 Response 데이터 형식 (json)
-      // {'likes_count': post.like_count, 'message': message }
+
       success: function (response) {
         // 통신 성공시 - 동적으로 좋아요 갯수 변경, 유저 목록 변경
-        //alert(response.message);
         $("#count-" + pk).html(response.interest);
       },
       error: function (request, status, error) {
@@ -83,5 +47,12 @@
         //  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
       },
     });
+  });
+
+  document.getElementById("mySelect").value =
+    localStorage.getItem("selectedOption");
+
+  document.getElementById("mySelect").addEventListener("change", function () {
+    localStorage.setItem("selectedOption", this.value);
   });
 </script>
