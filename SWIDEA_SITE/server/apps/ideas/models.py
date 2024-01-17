@@ -10,6 +10,8 @@ class Idea(models.Model):
   #수정필요
   devtool = models.ForeignKey(Devtool,on_delete=models.CASCADE,verbose_name = '개발툴')
   
+  #찜하기
+  star = models.BooleanField(default = False)
   
   def __str__(self):
     return self.title

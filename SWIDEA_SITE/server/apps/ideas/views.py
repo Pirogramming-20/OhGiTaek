@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Idea
+from .models import *
 from .forms import IdeaForm
 # Create your views here.
 
@@ -57,3 +57,22 @@ def delete(request,pk):
   if request.method == 'POST':
     Idea.objects.get(id=pk).delete()
   return redirect('ideas:list')
+
+
+def star_list(request,pk):
+  star_toggle = Idea.objects.get(id=pk)
+  if star_toggle.star:
+    star_toggle.star = False
+  else:
+    star_toggle.star = True
+  star_toggle.save()
+  return redirect('ideas:list')
+
+def star_detail(request,pk):
+  star_toggle = Idea.objects.get(id=pk)
+  if star_toggle.star:
+    star_toggle.star = False
+  else:
+    star_toggle.star = True
+  star_toggle.save()
+  return redirect('ideas:detail',pk)

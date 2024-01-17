@@ -22,24 +22,43 @@
   {% for idea in ideas %}
   <!-- <img class="item"> -->
     {% if idea.image.url != null and idea.image.url != '' %}
+
+    {% if idea.star %}
     <div class="image-container">
       <img src="{{ idea.image.url }}" alt="" >
-      <span class="star-icon">
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill check"></i>
+      </a>
+    </div>
+    {% else %}
+    <div class="image-container">
+      <<img src="{{ idea.image.url }}" alt="" >
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
         <i class="fa-regular fa-star outline"></i>
         <i class="fa-solid fa-star fill"></i>
-      </span>
-  </div>
-    
+      </a>
+    </div>
+    {% endif %}
     
     {% else %}
-
+    {% if idea.star %}
     <div class="image-container">
       <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
-      <span class="star-icon">
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill check"></i>
+      </a>
+    </div>
+    {% else %}
+    <div class="image-container">
+      <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
         <i class="fa-regular fa-star outline"></i>
         <i class="fa-solid fa-star fill"></i>
-      </span>
-  </div>
+      </a>
+    </div>
+    {% endif %}
     {% endif %}
     <div class="info">
       <a href="{% url 'ideas:detail' idea.pk %}" class="title">

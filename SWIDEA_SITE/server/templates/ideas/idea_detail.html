@@ -9,11 +9,39 @@
 
 <div class="content-wrapper">
   <div class="info1">
-    {% if idea.image.url != null and idea.image.url != '' %}
-    <img src="{{ idea.image.url }}" alt="" />
+    {% if idea.image.url != null and idea.image.url != '' %} {% if idea.star %}
+    <div class="image-container">
+      <img src="{{ idea.image.url }}" alt="" />
+      <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill check"></i>
+      </a>
+    </div>
     {% else %}
-    <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
-    {% endif %}
+    <div class="image-container">
+      <<img src="{{ idea.image.url }}" alt="" />
+      <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill"></i>
+      </a>
+    </div>
+    {% endif %} {% else %} {% if idea.star %}
+    <div class="image-container">
+      <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
+      <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill check"></i>
+      </a>
+    </div>
+    {% else %}
+    <div class="image-container">
+      <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
+      <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-solid fa-star fill"></i>
+      </a>
+    </div>
+    {% endif %} {% endif %}
     <div class="info2">
       <h1>{{idea.title}}</h1>
       <p>1. 아이디어 관심도</p>
