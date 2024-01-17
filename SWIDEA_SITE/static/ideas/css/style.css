@@ -1,9 +1,19 @@
 @import "./reset.css";
-
+body {
+  background-image: url("https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536_1280.jpg");
+  font-weight: 700;
+}
 .image-container {
   position: relative;
 }
 
+a {
+  text-decoration: none;
+}
+h1 {
+  font-size: 25px;
+  color: rgb(96, 149, 170);
+}
 .image-container img {
   width: 200px;
 
@@ -37,10 +47,25 @@
 .navbar {
   display: flex;
   gap: 30px;
-  font-size: 40px;
-  justify-content: center;
+  font-size: 20px;
+  justify-content: space-around;
+  padding: 15px 0;
+  position: relative;
 }
 
+.logo {
+  color: white;
+}
+
+.navbar::after {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: white;
+  bottom: 0;
+  content: "";
+  display: inline-block;
+}
 .head {
   display: flex;
   flex-direction: column;
@@ -52,7 +77,9 @@
 .sort {
   display: flex;
   flex-direction: row-reverse;
-  margin-right: 100px;
+  position: absolute;
+  right: 120px;
+  top: 70px;
 }
 img {
   height: 100px;
@@ -60,19 +87,10 @@ img {
   object-fit: cover;
 }
 
-.user-wrap {
-  width: 100%;
-  margin: 10px auto;
-  position: relative;
-}
-.user-wrap img {
-  width: 100%;
-  vertical-align: middle;
-}
-.user-text {
-  position: absolute;
-  top: 10%;
-  right: 10%;
+.content-wrapper {
+  background-color: rgb(96, 149, 170);
+  border-radius: 15px;
+  padding: 20px;
 }
 
 .list_main {
@@ -83,4 +101,54 @@ img {
 .content-wrapper {
   display: flex;
   flex-direction: column;
+}
+.idea-list {
+  background-color: rgba(211, 211, 211, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 80px;
+  border-radius: 30px;
+  padding-bottom: 60px;
+  gap: 20px;
+  position: relative;
+  color: white;
+}
+
+.content-wrapper2 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.dev-info {
+  display: flex;
+  gap: 30px;
+  padding: 10px 50px;
+  border: 3px solid rgb(96, 149, 170);
+  border-radius: 10px;
+  position: relative;
+}
+
+.dev-info::after {
+  position: absolute;
+  height: 1px;
+  width: 113%;
+  background-color: white;
+  bottom: 0;
+  left: -22px;
+  content: "";
+  display: inline-block;
+}
+.sw {
+  margin-bottom: 15px;
+}
+.dev-info-list {
+  display: flex;
+  gap: 30px;
+  padding: 10px 50px;
+  border: 3px solid rgb(96, 149, 170);
+  border-radius: 10px;
+  position: relative;
 }

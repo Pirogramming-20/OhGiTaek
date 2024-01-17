@@ -1,34 +1,35 @@
 {% extends 'base.html' %} {% load static %} {%block content%}
-<div class="head">
-  <h1>DevTool Detail</h1>
-  <div>
-    개발툴 세부내용 페이지입니다. 자신이 사용가능한 개발툴의 목록을 확인해
-    보세요.
+<div class="idea-list">
+  <div class="head">
+    <h1>DevTool Detail</h1>
+    <div>
+      개발툴 세부내용 페이지입니다. 자신이 사용가능한 개발툴의 목록을 확인해
+      보세요.
+    </div>
   </div>
-</div>
 
-<div class="content-wrapper">
-  <div class="info1">
-    <div class="info2">
-      <h1>{{devtool.name}}</h1>
+  <div class="content-wrapper">
+    <div class="dev-info">
+      <h2>{{devtool.name}}</h2>
       <p>{{devtool.kind}}</p>
       <p>{{devtool.content}}</p>
     </div>
+    <div class="sw">> 만들 수 있는 sw 목록</div>
+    {% for rel_idea in related_ideas %}
+    <a href="{% url 'ideas:detail' rel_idea.pk %}" class="btn btn-success">
+      {{rel_idea.title}}
+    </a>
+    <br />
+    {% endfor %}
   </div>
-  {% for rel_idea in related_ideas %}
-  <a href="{% url 'ideas:detail' rel_idea.pk %}" class="btn btn-success">
-    {{rel_idea.title}}
-  </a>
-  <br />
-  {% endfor %}
+  <form action="{% url 'devtools:delete' devtool.pk %}" method="POST">
+    {%csrf_token%}
+    <button type="submit" class="btn btn-danger">삭제</button>
+  </form>
+  <a href="{% url 'devtools:list' %}" class="btn btn-primary">목록</a>
+  <a href="{% url 'devtools:update' devtool.pk %}" class="btn btn-primary"
+    >수정</a
+  >
 </div>
-<form action="{% url 'devtools:delete' devtool.pk %}" method="POST">
-  {%csrf_token%}
-  <button type="submit" class="btn btn-danger">삭제</button>
-</form>
-<a href="{% url 'devtools:list' %}" class="btn btn-primary">목록</a>
-<a href="{% url 'devtools:update' devtool.pk %}" class="btn btn-primary"
-  >수정</a
->
 
 {%endblock%}
