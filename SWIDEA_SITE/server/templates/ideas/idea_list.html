@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %} {%block content%}
+<div class="head">
+  <h1>Idea List</h1>
+  <div>나의 아이디어를 잊지 말고 기록해보세요</div>
+</div>
+
+<!-- 정렬기준 -->
+<div class="sort">
+  <form>
+    <select name="sort" onchange="form.submit()">
+      <option value="" selected="">---------</option>
+      <option value="title">이름순</option>
+      <option value="pk">등록순</option>
+      <option value="updated_date">최신순</option>
+      <option value="interest">인기순</option>
+    </select>
+  </form>
+</div>
+
+<!-- 아이디어 리스트 반복문 -->
+<div class="content-wrapper">
+  {% for idea in ideas %}
+  <!-- <img class="item"> -->
+    {% if idea.image.url != null and idea.image.url != '' %}
+    <img src="{{ idea.image.url }}" alt="" >
+    
+    {% else %}
+    <img src="{% static 'ideas/image/no_img.png' %}" alt="대체텍스트" />
+    {% endif %}
+    <div class="info">
+      <a href="{% url 'ideas:detail' idea.pk %}" class="title">
+        {{idea.title}}
+      </a>
+      <p class="devtool">예상 개발툴: {{idea.devtool}}</p>
+      <p class="interest">
+        아이디어 관심도: <a href="#" onclick="fetchMin()">-</a> <article>{{idea.interest}}</article> <a>+</a>
+      </p>
+      <script>
+        
+      </script>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{%endblock%}
+
