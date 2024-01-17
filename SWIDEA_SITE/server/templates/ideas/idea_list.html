@@ -65,10 +65,14 @@
         {{idea.title}}
       </a>
       <p class="devtool">예상 개발툴: {{idea.devtool}}</p>
-      <p class="interest">
-        아이디어 관심도: <a href="#" onclick="fetchMin()">-</a> <article>{{idea.interest}}</article> <a>+</a>
+      <p class="interest"> 아이디어 관심도: 
+        <button value="{{idea.pk}}" class="click"  name="increase">+</button>
+        <span id="count-{{idea.pk}}">{{idea.interest}}</span>
+        <button value="{{idea.pk}}" class="click" name="decrease"  >-</button>
       </p>
       
+    
+
     </div>
   </div>
   {% endfor %}
