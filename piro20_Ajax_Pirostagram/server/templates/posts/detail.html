@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="post">
+      <div class="post_title">{{post.title}}</div>
+      <div class="post_content">{{post.content}}</div>
+    </div>
+
+    <div class="comment-list-{{post.id}}">
+      {% for comment1 in post.post_comment %}
+      <div class="comment comment{{comment1.id}}">
+        {{comment1.comment}}
+        <div
+          class="btn btn-primary comment-create"
+          onclick="onClickDelete({{ post.id }},{{comment1.id}})"
+        >
+          삭제
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="comment-id-{{ post.id }}">
+      <input
+        type="text"
+        id="commentInput-{{ post.id }}"
+        placeholder="댓글 내용을 입력하세요"
+      />
+      <div
+        class="btn btn-primary comment-create"
+        onclick="onClickCreate({{ post.id }},document.getElementById('commentInput-{{ post.id }}').value)"
+      >
+        등록
+      </div>
+    </div>
+    <script>
+      const requestClick = new XMLHttpRequest();
+
+      const onClickCreate = (id, comment) => {
+        const url = "/comments/create/";
+        requestClick.open("POST", url, true);
+        requestClick.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        requestClick.send(JSON.stringify({ id: id, comment: comment }));
+
+        requestClick.onreadystatechange = () => {
+          if (requestClick.readyState === XMLHttpRequest.DONE) {
+            if (requestClick.status < 400) {
+              const { id, comment, comment_id } = JSON.parse(
+                requestClick.response
+              );
+              const element = document.querySelector(`.comment-list-${id}`);
+              element.innerHTML =
+                element.innerHTML +
+                `<div class='comment comment${comment_id}'>${comment}<div
+                  class="btn btn-primary comment-create"
+                  onclick="onClickDelete({{ post.id }},${comment_id})"
+                >
+                  삭제
+                </div></div>`;
+            }
+          }
+        };
+      };
+
+      //레디스테이트가 변할때마다 이벤트리스너처럼 자동작동
+
+      const onClickDelete = (id, comment_id) => {
+        const url = `/comments/delete/${id}`;
+        requestClick.open("POST", url, true);
+        requestClick.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        requestClick.send(JSON.stringify({ id: id, comment_id: comment_id }));
+
+        requestClick.onreadystatechange = () => {
+          if (requestClick.readyState === XMLHttpRequest.DONE) {
+            if (requestClick.status < 400) {
+              const { id, comment_id } = JSON.parse(requestClick.response);
+              console.log(comment_id);
+              const element = document.querySelector(`.comment${comment_id}`);
+              console.log("poss");
+              element.innerHTML = ``;
+            }
+          }
+        };
+      };
+
+      //레디스테이트가 변할때마다 이벤트리스너처럼 자동작동
+    </script>
+  </body>
+</html>
