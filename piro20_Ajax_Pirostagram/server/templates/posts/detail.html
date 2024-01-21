@@ -13,7 +13,8 @@
     </div>
 
     <div class="comment-list-{{post.id}}">
-      {% for comment1 in post.post_comment %}
+      {% for comment1 in comments %}
+      <div>돌긴하나?</div>
       <div class="comment comment{{comment1.id}}">
         {{comment1.comment}}
         <div

@@ -30,7 +30,9 @@ def create(request):
 
 def detail(request,pk):
   post = get_object_or_404(Post, pk=pk)
+  comments = post.comments.all()
   ctx = {
+    'comments':comments,
     "post" : post,
   }
   return render(request, "posts/detail.html", ctx)
