@@ -1,0 +1,57 @@
+/* @import "./reset.css"; */
+
+.fa-solid {
+  color: pink;
+}
+
+.posts_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+
+.post {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.img {
+  width: 225px;
+}
+
+.comment {
+  display: inline-flex;
+  margin: 5px;
+  justify-content: space-between;
+  background-color: pink;
+  border-radius: 5px;
+  gap: 20px;
+}
+
+.comment-create {
+  background-color: greenyellow;
+  border-radius: 5px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-list {
+  display: table-caption;
+  flex-direction: column;
+}
+
+.comment-new {
+  display: flex;
+}

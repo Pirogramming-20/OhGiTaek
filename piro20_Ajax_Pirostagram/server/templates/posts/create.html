@@ -7,7 +7,12 @@
     <title>Document</title>
   </head>
   <body>
-    <form method="POST" action="" class="signup-block">
+    <form
+      method="POST"
+      action=""
+      class="signup-block"
+      enctype="multipart/form-data"
+    >
       <h1>게시물 작성</h1>
       {% csrf_token %} {{ post }}
       <input type="submit" value="SignUp" class="btn-neon sbmit-btn" />

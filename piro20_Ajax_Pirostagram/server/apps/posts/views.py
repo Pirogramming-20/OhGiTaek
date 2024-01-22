@@ -12,7 +12,7 @@ def main(request):
 
 def create(request):
   if request.method == 'POST':
-    post = PostForm(request.POST)
+    post = PostForm(request.POST, request.FILES)
     if post.is_valid():
       post.save()
       return redirect('posts:main')
