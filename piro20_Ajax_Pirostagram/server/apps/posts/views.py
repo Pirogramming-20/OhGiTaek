@@ -12,9 +12,12 @@ def main(request):
 
 def create(request):
   if request.method == 'POST':
-    post = PostForm(request.POST, request.FILES)
-    if post.is_valid():
-      post.save()
+    form = PostForm(request.POST, request.FILES)
+    if form.is_valid():
+      post = form.save(commit=False)  
+      post.user = request.user  
+      post.save() 
+      
       return redirect('posts:main')
     else:
       ctx={

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,8 +13,25 @@
   </head>
   <body>
     <div class="header">
-      <div class="title">Pirostargram</div>
+      <a class="menu-btn title" href="{% url 'posts:main' %}">Pirostargram</a>
+
+      {% if user.is_authenticated %}
+
+      <span>{{user.username}} 님이 로그인중</span>
       <a class="menu-btn" href="{% url 'posts:create' %}">게시글 작성하기</a>
+      <a href="{% url 'users:logout' %}">로그아웃</a>
+
+      {% else %}
+      <a class="social_login3" href="{% provider_login_url 'google' %}"
+        >구글 로그인</a
+      >
+      <a class="social_login3" href="{% provider_login_url 'kakao' %}"
+        >카카오 로그인</a
+      >
+      <a class="social_login3" href="{% provider_login_url 'naver' %}"
+        >네이버 로그인</a
+      >
+      {% endif %}
     </div>
 
     <div class="posts_list">
@@ -30,9 +47,9 @@
         /><br />
         {% endif %}
         <a class="post_title" href="{% url 'posts:detail' post.pk %}"
-          >{{post.title}}</a
+          >제목 : {{post.title}}</a
         >
-        <div class="post_content">{{post.content}}</div>
+        <div class="post_user">작성자 : {{post.user.username}}</div>
         <div class="post-id-{{ post.id }}">
           <div
             class="btn btn-primary post__like"

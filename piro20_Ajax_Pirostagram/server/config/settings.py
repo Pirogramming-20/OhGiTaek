@@ -39,7 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.posts',
     'apps.comments',
+    'apps.users',
+    'django.contrib.sites', #추가
+    #allauth #추가
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #provider #추가
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
 ]
+
+
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -132,3 +147,68 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = (
+    # 'allauth' specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+    #Needed to login by username in Django admin, regardless of 'allauth'
+    'django.contrib.auth.backends.ModelBackend',
+    
+)
+
+LOGIN_REDIRECT_URL = '/'
+SITE_ID = 1
+
+
+SOCIALACCOUNT_PROVIDERS ={
+"kakao": {
+"APP": {
+"client_id": ("c41c9d1accde350cbb76e4e36c29fe16"),
+"secret": "ff382e4f5f698f02d99418484b623a14",
+"key": ""
+},
+# These are provider-specific settings that can only be
+# listed here:
+"SCOPE": [
+
+],
+
+"AUTH_PARAMS": {
+"access_type": "online",
+'prompt': 'select_account',
+}},
+######################################################
+
+"naver": {
+"APP": {
+"client_id": ("JSv6sk6FvtglbqmUHUBT"),
+"secret": ("cAjdyN7dnC"),
+"key": ""
+},
+# These are provider-specific settings that can only be
+# listed here:
+"SCOPE": [
+
+],
+
+"AUTH_PARAMS": {
+"access_type": "online",
+'prompt': 'select_account',
+}},
+######################################################
+"google": {
+"APP": {
+"client_id": ("765028604986-4bb5fu9s2147c3qsvqbq6g8af2jekc8j.apps.googleusercontent.com"),
+"secret": ("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"),
+"key": ""
+},
+"SCOPE": [
+ "profile",
+ "email",
+],
+"AUTH_PARAMS": {
+"access_type": "online",
+'prompt': 'select_account',
+}}}
+SOCIALACCOUNT_LOGIN_ON_GET = True

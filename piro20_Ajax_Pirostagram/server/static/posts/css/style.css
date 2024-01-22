@@ -1,5 +1,7 @@
 /* @import "./reset.css"; */
-
+a {
+  text-decoration-line: none;
+}
 .fa-solid {
   color: pink;
 }
@@ -31,12 +33,17 @@
 }
 
 .comment {
-  display: inline-flex;
+  display: -webkit-inline-box;
   margin: 5px;
-  justify-content: space-between;
   background-color: pink;
   border-radius: 5px;
   gap: 20px;
+}
+.comment-user {
+  background-color: skyblue;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
 }
 
 .comment-create {

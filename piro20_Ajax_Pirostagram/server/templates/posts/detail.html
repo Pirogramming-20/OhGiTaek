@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="{% static 'posts/css/style.css' %}" />
   </head>
   <body>
+    <div class="header">
+      <a class="menu-btn title" href="{% url 'posts:main' %}">Pirostargram</a>
+      {% if user.is_authenticated %}
+
+      <span>{{user.username}} 님이 로그인중</span>
+      <a class="menu-btn" href="{% url 'posts:create' %}">게시글 작성하기</a>
+      <a href="{% url 'users:logout' %}">로그아웃</a>
+      {%endif %}
+      <a class="menu-btn title" href="{% url 'posts:main' %}">메뉴</a>
+    </div>
     <div class="post">
       {% if post.photo.url != '' %}
       <img src="{{post.photo.url}}" alt="제품 이미지" class="img" /><br />
@@ -22,8 +32,9 @@
         class="img"
       /><br />
       {% endif %}
-      <div class="post_title">{{post.title}}</div>
-      <div class="post_content">{{post.content}}</div>
+      <div class="post_title">제목 : {{post.title}}</div>
+      <div class="post_user">작성자 : {{post.user.username}}</div>
+      <div class="post_content">내용 : {{post.content}}</div>
       <div class="post-id-{{ post.id }}">
         <div
           class="btn btn-primary post__like"
@@ -42,12 +53,15 @@
       {% for comment1 in comments %}
       <div class="comment comment{{comment1.id}}">
         {{comment1.comment}}
+        <div class="comment-user">{{comment1.user.username}}</div>
+        {% if comment1.user.username == user.username %}
         <div
           class="btn btn-primary comment-create"
           onclick="onClickDelete({{ post.id }},{{comment1.id}})"
         >
           삭제
         </div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
@@ -60,7 +74,7 @@
       />
       <div
         class="btn btn-primary comment-create"
-        onclick="onClickCreate({{ post.id }},document.getElementById('commentInput-{{ post.id }}').value)"
+        onclick="onClickCreate({{ post.id }},document.getElementById('commentInput-{{ post.id }}').value,'{{user.username}}')"
       >
         등록
       </div>
@@ -68,30 +82,35 @@
     <script>
       const requestClick = new XMLHttpRequest();
 
-      const onClickCreate = (id, comment) => {
+      const onClickCreate = (id, comment, username) => {
+        console.log(1);
         const url = "/comments/create/";
         requestClick.open("POST", url, true);
         requestClick.setRequestHeader(
           "Content-Type",
           "application/x-www-form-urlencoded"
         );
-        requestClick.send(JSON.stringify({ id: id, comment: comment }));
-
+        console.log("1");
+        requestClick.send(
+          JSON.stringify({ id: id, comment: comment, username: username })
+        );
+        console.log("2");
         requestClick.onreadystatechange = () => {
           if (requestClick.readyState === XMLHttpRequest.DONE) {
             if (requestClick.status < 400) {
-              const { id, comment, comment_id } = JSON.parse(
+              const { id, comment, comment_id, user } = JSON.parse(
                 requestClick.response
               );
+              console.log("3");
               const element = document.querySelector(`.comment-list-${id}`);
               element.innerHTML =
                 element.innerHTML +
-                `<div class='comment comment${comment_id}'>${comment}<div
+                `<div class='comment comment${comment_id}'>${comment}  <div class="comment-user">${user}  </div>{% if comment1.user.username == user.username %}<div
                   class="btn btn-primary comment-create"
                   onclick="onClickDelete({{ post.id }},${comment_id})"
                 >
                   삭제
-                </div></div>`;
+                </div>{% endif %}</div>`;
             }
           }
         };
