@@ -53,12 +53,14 @@
         <div class="post-id-{{ post.id }}">
           <div
             class="btn btn-primary post__like"
-            onclick="onClickLike({{ post.id }},{{post.like}})"
+            onclick="onClickLike({{ post.id }},{{post.like}},'{{user.username}}')"
           >
-            {% if post.like %}
+            {% if post.is_like %}
             <i class="fa-solid fa-heart"></i>
+            <div>총 좋아요 : {{post.like}}</div>
             {% else %}
             <i class="fa-regular fa-heart"></i>
+            <div>총 좋아요 : {{post.like}}</div>
             {% endif %}
           </div>
         </div>
@@ -68,29 +70,33 @@
     <script>
       const requestLike = new XMLHttpRequest();
 
-      const onClickLike = (id, type) => {
+      const onClickLike = (id, like, username) => {
         const url = "/like_ajax/";
         requestLike.open("POST", url, true);
         requestLike.setRequestHeader(
           "Content-Type",
           "application/x-www-form-urlencoded"
         );
-        requestLike.send(JSON.stringify({ id: id, type: type }));
+        requestLike.send(
+          JSON.stringify({ id: id, like: like, username: username })
+        );
+        console.log("1");
       };
 
       //레디스테이트가 변할때마다 이벤트리스너처럼 자동작동
       requestLike.onreadystatechange = () => {
         if (requestLike.readyState === XMLHttpRequest.DONE) {
+          console.log("2");
           if (requestLike.status < 400) {
-            const { id, type } = JSON.parse(requestLike.response);
+            const { id, type, like } = JSON.parse(requestLike.response);
             const element = document.querySelector(
               `.post-id-${id} .post__like`
             );
-
+            console.log("3");
             if (type) {
-              element.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+              element.innerHTML = `<i class="fa-solid fa-heart"></i><div>총 좋아요 : ${like}</div>`;
             } else {
-              element.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+              element.innerHTML = `<i class="fa-regular fa-heart"></i><div>총 좋아요 : ${like}</div>`;
             }
           }
         }

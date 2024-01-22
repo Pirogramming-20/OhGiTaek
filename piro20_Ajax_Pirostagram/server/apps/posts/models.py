@@ -9,6 +9,9 @@ class Post(models.Model):
   comments = models.ManyToManyField(Comment, blank=True)
   photo = models.ImageField('이미지', blank=True, upload_to='posts/%Y%m%d')
   user = models.ForeignKey(User, on_delete=models.CASCADE,)
-
+  likes = models.ManyToManyField(User, related_name='likes', blank=True)
+  is_like = models.BooleanField(blank=True)
   def post_comment(self):
     return self.comments.filter(post_id=self.id)
+  def user_liked(self, user):
+    return self.likes.filter(id=user.id).exists()
